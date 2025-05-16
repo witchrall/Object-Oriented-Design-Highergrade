@@ -1,0 +1,26 @@
+
+ooooooooooooooooooooooooooooooooo Datum: 21/4 oooooooooooooooooooooooooooooooooooooooo
+Skriv om sale så att getListOfRegisteredItem skickar en deep copy istället.
+
+
+
+ooooooooooooooooooooooooooooooooo Datum: 25/4 ooooooooooooooooooooooooooooooooooooooooooooo
+
+Kvar att göra: 
+1. Payment klassen
+    - Payment constructor som tar emot PaidAmount
+    - calculateTotalAmount
+
+ooooooooooooooooooooooooooooooooo Datum: 13/5 ooooooooooooooooooooooooooooooooooooooooooooo
+1. Fixa tester för exceptions i externa databasen
+2. lägg till javadoc commentar för @throws för alla metoder
+som kastar exceptions (se listing 8.17)
+@param ookedStateThenewvalueofthebookedproperty. 
+@throws CarRegistryException if the data base call failed, or if the specified car did not exist.
+
+3. Never write an empty catch block (se sida 185), controller test
+
+
+
+
+
