@@ -14,17 +14,25 @@ public class TotalRevenueFileOutput extends SaleDisplay{
     
     FileLogger revenueLogger = new FileLogger("TotalRevenue.txt");
 
+    /**
+     * Prints the current revenue to a log. 
+     * @param revenue The revenue from all sales.
+     */
     @Override
-    protected void doShowTotalIncome(double income) throws Exception{
-        if(income < 0){
+    protected void doShowTotalIncome(double revenue) throws Exception{
+        if(revenue < 0){
             throw new Exception("Negative revenue!");
         }
-        String revenue = Double.toString(income);
-        revenueLogger.log(revenue);
+        String totalRevenue = Double.toString(revenue);
+        revenueLogger.log(totalRevenue);
 
 
     }
 
+    /**
+     * Handles errors and prints to a log.
+     * @param e The error exception 
+     */
     @Override
     protected void handleErrors(Exception e){
         revenueLogger.log(e.getMessage());

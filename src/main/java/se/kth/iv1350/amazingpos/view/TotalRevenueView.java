@@ -1,7 +1,6 @@
 package se.kth.iv1350.amazingpos.view;
 
 import se.kth.iv1350.amazingpos.logapi.FileLogger;
-import se.kth.iv1350.amazingpos.model.Sale;
 import se.kth.iv1350.amazingpos.model.SaleDisplay;
 
 /**
@@ -9,48 +8,23 @@ import se.kth.iv1350.amazingpos.model.SaleDisplay;
  */
 
 public class TotalRevenueView extends SaleDisplay { 
-    private double totalRevenue;
-
-
-    @Override   
-    public void notifyObserver(Sale sale){
-        addToTotalRevenue(sale.getFinalAmount());
-    }
-
-   
-    private void addToTotalRevenue(double amount){  
-        this.totalRevenue += amount;
-        
-        String revenue = Double.toString(totalRevenue);
-
-        System.out.println("");
-        System.out.println("#### This is not part of the receipt ####");
-        System.out.println("#### Will be viewed on it's own GUI ####");
-        System.out.println("####Total Revenue from todays sales####");
-        System.out.println("Total revenue would be: " + revenue);
-        System.out.println("###################################");
-        System.out.println("");
-      
-        System.out.println("--------------Beginning of receipt-------------------"); //Isn't part of addTotalRevenue
-                                                                                       //relocated from view to make output clean
-
-    }
-
-    
-
-     @Override
-    protected void doShowTotalIncome(double income) throws Exception{
-        if(income < 0){
+    /**
+     * Prints the total revenue to System.out.
+     * @param revenue The total revenue 
+     */
+    @Override
+    protected void doShowTotalIncome(double revenue) throws Exception{
+        if(revenue < 0){
             throw new Exception("Negative revenue!");
         }
-        String revenue = Double.toString(income);
+        String totalRevenue = Double.toString(revenue);
     
 
         System.out.println("");
         System.out.println("#### This is not part of the receipt ####");
         System.out.println("#### Will be viewed on it's own GUI ####");
         System.out.println("####Total Revenue from todays sales####");
-        System.out.println("Total revenue would be: " + revenue);
+        System.out.println("Total revenue would be: " + totalRevenue); 
         System.out.println("###################################");
         System.out.println("");
       
@@ -59,7 +33,10 @@ public class TotalRevenueView extends SaleDisplay {
 
     }
 
-   
+    /**
+     * Handles errors and prints to a log.
+     * @param e The error exception 
+     */
     @Override
     protected void handleErrors(Exception e){
         FileLogger revenueLogger = new FileLogger("log.txt");
