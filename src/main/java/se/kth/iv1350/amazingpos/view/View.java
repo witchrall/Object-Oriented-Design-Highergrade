@@ -3,8 +3,12 @@ package se.kth.iv1350.amazingpos.view;
 
 import se.kth.iv1350.amazingpos.controller.Controller;
 import se.kth.iv1350.amazingpos.integration.DataBaseException;
-
-import se.kth.iv1350.amazingpos.model.*;
+import se.kth.iv1350.amazingpos.model.CashPayment;
+import se.kth.iv1350.amazingpos.model.CreditCardPayment;
+import se.kth.iv1350.amazingpos.model.InvalidItemException;
+import se.kth.iv1350.amazingpos.model.ItemDTO;
+import se.kth.iv1350.amazingpos.model.PaymentStrategy;
+import se.kth.iv1350.amazingpos.model.SaleDTO;
 
 
 /**
@@ -43,8 +47,9 @@ public class View {
         System.out.println("");
 
         SaleDTO currentSale;
-        try {
-            for(int i = 0; i <= 4; i++){
+        
+        for(int i = 0; i <= 4; i++){
+            try{
                 currentSale =  contr.addItem(i, quantity);
                 ItemDTO currentItem =  currentSale.getLastRegisteredItem();
                 System.out.println("Item ID: " + i);
@@ -58,10 +63,12 @@ public class View {
 
                 System.out.println(""); 
                 System.out.println(""); 
-            }
-        } catch (InvalidItemException | DataBaseException error) {
+            } catch (InvalidItemException | DataBaseException error) {
             System.out.println(error.getMessage()); 
         }
+            
+        }
+        
                 
 
         System.out.println(""); System.out.println("");System.out.println("");
