@@ -63,9 +63,15 @@ public class View {
 
                 System.out.println(""); 
                 System.out.println(""); 
-            } catch (InvalidItemException | DataBaseException error) {
-            System.out.println(error.getMessage()); 
-        }
+            } catch (InvalidItemException error) {
+                System.out.println(error.getMessage()); 
+            }
+            catch (DataBaseException error){
+                System.out.println(error.getMessage());
+            }
+            catch (Exception error){
+                System.out.println("Couldn't register item, please try again");
+            }
             
         }
         

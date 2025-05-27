@@ -75,11 +75,11 @@ public class Controller {
             isQuantityReasonable(quantity);
         } catch (InvalidItemException invalidQuantity){
             logger.log(invalidQuantity.getMessage() + "Invalid quantity");
-            throw invalidQuantity;
+            throw new InvalidItemException("Unresonable quantity");
         }
         catch(Exception javaException){
-            System.out.println("Couldn't register item, please try again");
             logger.log(javaException.getMessage());
+            throw javaException;
         }
 
         SaleDTO currentSale;
@@ -87,7 +87,7 @@ public class Controller {
             currentSale = sale.registerItem(itemIdentifier, quantity);
         } catch (DataBaseException dataBaseError){
             logger.log(dataBaseError.getMessage());
-            throw dataBaseError;
+            throw new DataBaseException("Can not connect to the database");
         }
         
         try{
@@ -95,11 +95,11 @@ public class Controller {
         }
         catch(InvalidItemException error){
             logger.log(error.getMessage() + " Invalid item id");
-            throw error;         
+            throw new InvalidItemException("Invalid Item Id");          
         }
         catch(Exception javaException){
-            System.out.println("Couldn't register item, please try again");
             logger.log(javaException.getMessage());
+            throw javaException;
         }
 
         return currentSale;  
