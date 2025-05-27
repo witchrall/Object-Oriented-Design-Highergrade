@@ -193,7 +193,7 @@ public class ControllerTest {
             message = quantityError.getMessage();
         }
 
-        String expectedResult = "The quantity is unreasonable!";
+        String expectedResult = "Unresonable quantity";
         
         assertEquals(message, expectedResult, "Exception Message Is incorrect");    
     }
@@ -206,7 +206,7 @@ public class ControllerTest {
         } catch (InvalidItemException quantityError){
             message = quantityError.getMessage();
         }
-        String expectedResult = "The quantity is unreasonable!";
+        String expectedResult = "Unresonable quantity";
         assertEquals(message, expectedResult,"Exception Message Is incorrect");    
     }
     @Test
@@ -217,7 +217,7 @@ public class ControllerTest {
         } catch (InvalidItemException quantityError){
             message = quantityError.getMessage();
         }
-        String expectedResult = "itemNotValid";
+        String expectedResult = "Invalid Item Id";
         assertEquals(message, expectedResult,"Exception Message Is incorrect");    
     }
 
